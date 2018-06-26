@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Participants</th>
       <th>Description</th>
       <th>Event type</th>
       <th>Game</th>
@@ -17,9 +18,10 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
+        <td><%= event.users.count %></td>
         <td><%= event.description %></td>
-        <td><%= event.event_type %></td>
-        <td><%= event.game %></td>
+        <td><%= link_to event.event_type.name, event.event_type %></td>
+        <td><%= link_to event.game.name, event.game %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -11,13 +11,18 @@
 </p>
 
 <p>
+  <strong>Participants:</strong>
+  <%= @event.users.pluck(:email).join(", ") %>
+</p>
+
+<p>
   <strong>Event type:</strong>
-  <%= @event.event_type %>
+  <%= link_to @event.event_type.name, @event.event_type %>
 </p>
 
 <p>
   <strong>Game:</strong>
-  <%= @event.game %>
+  <%= link_to @event.game.name, @event.game %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

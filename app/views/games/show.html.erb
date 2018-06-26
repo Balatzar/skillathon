@@ -10,5 +10,16 @@
   <%= @game.description %>
 </p>
 
+<strong>Events:</strong>
+<% @game.events.each do |event| %>
+  <p><%= link_to "#{event.name} - #{event.users.count} participants", event %></p>
+<% end %>
+
+<strong>Events types:</strong>
+<% @game.event_types.each do |event_type| %>
+  <p><%= link_to event_type.name, event_type %></p>
+<% end %>
+
+
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
