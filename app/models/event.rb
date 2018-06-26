@@ -5,6 +5,6 @@ class Event < ApplicationRecord
   belongs_to :game
 
   def name
-    super || "#{game.name} - #{event_type.name}"
+    super || "#{game.name} - #{event_type.name}" if id
   end
 end
