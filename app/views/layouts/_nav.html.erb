@@ -1,0 +1,11 @@
+<% if current_user %>
+  <nav>
+    <h1>Skillathon</h1>
+    <ul>
+      <li><%= link_to "Events", events_path %></li>
+      <li><%= link_to "Types", event_types_path %></li>
+      <li><%= link_to "Games", games_path %></li>
+      <li><%= link_to "System", systems_path %></li>
+    </ul>
+  </nav>
+<% end %>
