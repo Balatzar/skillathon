@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>Games:</p>
+<% @user.games.each do |game| %>
+  <p><%= link_to game.name, game %></p>
+<% end %>
+
+<%= link_to 'Back', users_path %>
