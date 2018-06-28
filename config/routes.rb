@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :events
   resources :games
   resources :event_types
-  resources :users
   devise_for :users
+  resources :users do
+    member do
+      get :import_steam
+      post :import_full_steam_library
+    end
+  end
 end

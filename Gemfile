@@ -27,6 +27,7 @@ gem "jquery-rails"
 gem "simple_form"
 gem "wicked"
 gem 'chosen-rails'
+gem "rest-client"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

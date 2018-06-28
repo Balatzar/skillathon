@@ -1,0 +1,7 @@
+<h3>Importation Steam</h3>
+
+<%= form_tag import_full_steam_library_user_path(@user) do %>
+  <%= label_tag(:steam_id, "Your steam ID in numbers:") %>
+  <%= text_field_tag(:steam_id, "76561198076185971") %>
+  <%= submit_tag("Import") %>
+<% end %>

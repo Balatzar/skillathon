@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :import_steam, :import_full_steam_library]
 
   # GET /users
   # GET /users.json
@@ -11,6 +11,14 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+  end
+
+  def import_steam
+  end
+
+  def import_full_steam_library
+    SteamApi.new(params[:steam_id], @user.id).import_games
+    redirect_to @user, notice: "Full Steam library imported imported"
   end
 
   private
