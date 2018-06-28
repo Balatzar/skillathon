@@ -1,7 +1,9 @@
 <h3>Importation Steam</h3>
 
+<p><%= link_to "This site", "https://steamidfinder.com", target: "_blank" %> can help you find your steam ID (SteamID64). It should look like this: 76561198076185971.</p>
+
 <%= form_tag import_full_steam_library_user_path(@user) do %>
   <%= label_tag(:steam_id, "Your steam ID in numbers:") %>
-  <%= text_field_tag(:steam_id, "76561198076185971") %>
+  <%= text_field_tag(:steam_id) %>
   <%= submit_tag("Import") %>
 <% end %>
