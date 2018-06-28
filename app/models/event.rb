@@ -4,7 +4,11 @@ class Event < ApplicationRecord
   belongs_to :event_type
   belongs_to :game
 
-  def name
-    super || "#{game.name} - #{event_type.name}" if id
+  before_create :set_name
+
+  private
+
+  def set_name
+    self.name = "#{game.name} - #{event_type.name}" if name.blank?
   end
 end
