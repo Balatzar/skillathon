@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :systems
   root to: "public_pages#landing"
   resources :participations
   resources :events

@@ -10,7 +10,13 @@
   <%= @game.description %>
 </p>
 
-<strong>Events:</strong>
+<p><strong>Systems:</strong></p>
+<% @game.systems.each do |system| %>
+  <%= link_to system.name, system %>
+<% end %>
+
+
+<p><strong>Events:</strong></p>
 <% @game.events.each do |event| %>
   <p><%= link_to "#{event.name} - #{event.users.count} participants", event %></p>
 <% end %>
