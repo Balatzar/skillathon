@@ -11,6 +11,16 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require chosen-jquery
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).on("turbolinks:load", function() {
+  $("select").chosen({
+    allow_single_deselect: true,
+    no_results_text: "No results matched",
+    width: "200px"
+  });
+});

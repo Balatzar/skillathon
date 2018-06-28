@@ -26,6 +26,7 @@ gem "honeybadger", "~> 3.1"
 gem "jquery-rails"
 gem "simple_form"
 gem "wicked"
+gem 'chosen-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

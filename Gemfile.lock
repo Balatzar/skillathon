@@ -51,6 +51,10 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
+    chosen-rails (1.8.3)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     clipboard-rails (1.7.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -211,6 +215,7 @@ DEPENDENCIES
   attr_encrypted (~> 3.0.0)
   bootsnap (>= 1.1.0)
   byebug
+  chosen-rails
   clipboard-rails
   coffee-rails (~> 4.2)
   devise
