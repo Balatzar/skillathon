@@ -26,6 +26,11 @@
   <p><%= link_to event_type.name, event_type %></p>
 <% end %>
 
+<p><strong>Genres:</strong></p>
+<% @game.genres.each do |genre| %>
+  <p><%= link_to genre.name, genre %></p>
+<% end %>
+
 <p><strong>Owned by:</strong></p>
 <% @game.users.each do |user| %>
   <p><%= link_to user.email, user %></p>

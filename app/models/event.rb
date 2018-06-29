@@ -6,8 +6,6 @@ class Event < ApplicationRecord
 
   before_create :set_name
 
-  validates :name, presence: true
-
   private
 
   def set_name

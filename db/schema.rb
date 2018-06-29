@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_223048) do
+ActiveRecord::Schema.define(version: 2018_06_29_192957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,27 @@ ActiveRecord::Schema.define(version: 2018_06_28_223048) do
     t.index ["game_id"], name: "index_events_on_game_id"
   end
 
+  create_table "facets", force: :cascade do |t|
+    t.bigint "genre_id"
+    t.bigint "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_facets_on_game_id"
+    t.index ["genre_id"], name: "index_facets_on_genre_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "steam_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "owned_games", force: :cascade do |t|
@@ -93,6 +108,8 @@ ActiveRecord::Schema.define(version: 2018_06_28_223048) do
 
   add_foreign_key "events", "event_types"
   add_foreign_key "events", "games"
+  add_foreign_key "facets", "games"
+  add_foreign_key "facets", "genres"
   add_foreign_key "owned_games", "games"
   add_foreign_key "owned_games", "users"
   add_foreign_key "participations", "events"
