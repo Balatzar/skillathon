@@ -15,7 +15,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.games.pluck(:name).join(", ").truncate(200) %></td>
+        <td><%= user.games.pluck(:name).join(", ").truncate(50) %></td>
         <td><%= link_to 'Show', user %></td>
       </tr>
     <% end %>
