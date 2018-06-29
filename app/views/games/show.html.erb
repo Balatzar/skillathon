@@ -21,9 +21,14 @@
   <p><%= link_to "#{event.name} - #{event.users.count} participants", event %></p>
 <% end %>
 
-<strong>Events types:</strong>
+<p><strong>Events types:</strong></p>
 <% @game.event_types.each do |event_type| %>
   <p><%= link_to event_type.name, event_type %></p>
+<% end %>
+
+<p><strong>Owned by:</strong></p>
+<% @game.users.each do |user| %>
+  <p><%= link_to user.email, user %></p>
 <% end %>
 
 

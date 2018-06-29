@@ -5,7 +5,7 @@
   <%= @user.email %>
 </p>
 
-<p>Games:</p>
+<p><strong>Games:</strong></p>
 <% @user.games.each do |game| %>
   <p><%= link_to game.name, game %></p>
 <% end %>
