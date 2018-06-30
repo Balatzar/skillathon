@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :dictionaries
+  resources :handicaps
   resources :genres
   root to: "public_pages#landing"
   resources :systems

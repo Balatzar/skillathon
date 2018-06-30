@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @handicap.description %>
+</p>
+
+<p>
+  <strong>Example:</strong>
+  <%= @handicap.display %>
+</p>
+
+<p>
+  <strong>Variables:</strong>
+  <% @handicap.variables.each do |variable| %>
+    <h3><%= variable.variable_type %></h3>
+    <p><%= variable.min %></p>
+    <p><%= variable.max %></p>
+    <p><%= variable.dictionary&.name %></p>
+  <% end %>
+</p>
+
+<p>
+  <strong>Creator</strong>
+  <%= @handicap.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_handicap_path(@handicap) %> |
+<%= link_to 'Back', handicaps_path %>

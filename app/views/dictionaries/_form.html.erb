@@ -1,0 +1,23 @@
+
+<%= simple_form_for(@dictionary) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+  </div>
+
+  <h3>Words</h3>
+  <div id="words">
+    <%= f.simple_fields_for :words do |word| %>
+      <%= render 'word_fields', f: word %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add word', f, :words %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

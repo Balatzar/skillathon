@@ -1,0 +1,23 @@
+
+<%= simple_form_for(@handicap) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :description %>
+  </div>
+
+  <h3>Variables</h3>
+  <div id="variables">
+    <%= f.simple_fields_for :variables do |variable| %>
+      <%= render 'variable_fields', f: variable %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add variable', f, :variables %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

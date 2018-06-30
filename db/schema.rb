@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_29_194616) do
+ActiveRecord::Schema.define(version: 2018_06_29_201506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dictionaries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "event_types", force: :cascade do |t|
     t.string "name"
@@ -55,6 +61,14 @@ ActiveRecord::Schema.define(version: 2018_06_29_194616) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "handicaps", force: :cascade do |t|
+    t.string "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_handicaps_on_user_id"
   end
 
   create_table "owned_games", force: :cascade do |t|
@@ -107,12 +121,36 @@ ActiveRecord::Schema.define(version: 2018_06_29_194616) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "variables", force: :cascade do |t|
+    t.integer "variable_type"
+    t.integer "min"
+    t.integer "max"
+    t.bigint "dictionary_id"
+    t.bigint "handicap_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dictionary_id"], name: "index_variables_on_dictionary_id"
+    t.index ["handicap_id"], name: "index_variables_on_handicap_id"
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.string "name"
+    t.bigint "dictionary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dictionary_id"], name: "index_words_on_dictionary_id"
+  end
+
   add_foreign_key "events", "event_types"
   add_foreign_key "events", "games"
   add_foreign_key "facets", "games"
   add_foreign_key "facets", "genres"
+  add_foreign_key "handicaps", "users"
   add_foreign_key "owned_games", "games"
   add_foreign_key "owned_games", "users"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
+  add_foreign_key "variables", "dictionaries"
+  add_foreign_key "variables", "handicaps"
+  add_foreign_key "words", "dictionaries"
 end
