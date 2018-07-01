@@ -4,10 +4,12 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
+    <p>Vous pouvez ajouter des <strong>variables</strong> dans votre handicap en mettant <strong>%1</strong>, <strong>%2</strong> ect a l'interieur. Par exemple <strong>Jouez sans utiliser votre %1 pendant %2 minutes</strong>. Ici nous créerions deux variables. La premiere de type <strong>word</strong> et la seconde de type <strong>number</strong>. <%= link_to "Vous pouvez créer des dictionnaires de mots ici", new_dictionary_path, target: "_blank" %></p>
     <%= f.input :description %>
   </div>
 
   <h3>Variables</h3>
+  <p>Tous les champs sont obligatoires</p>
   <div id="variables">
     <%= f.simple_fields_for :variables do |variable| %>
       <%= render 'variable_fields', f: variable %>
@@ -21,3 +23,21 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+
+<script>
+
+  $(document).on("turbolinks:load", function() {
+    $('form').on('cocoon:after-insert', function(e, added_thing) {
+      var $form = $(added_thing)
+      var $select = $form.find(("[id$='variable_type']"))
+      $select.change(function(e) {
+        var type = $(e.target).val()
+        if (type) {
+          $form.find("." + type).show()
+          $form.find(".type:not(." + type + ")").hide()
+        }
+      })
+    });
+  })
+
+</script>
