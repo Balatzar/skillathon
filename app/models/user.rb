@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :events, through: :participations
   has_many :owned_games
   has_many :games, through: :owned_games
+
+  def name
+    email
+  end
 end
