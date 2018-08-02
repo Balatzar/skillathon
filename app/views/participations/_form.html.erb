@@ -1,27 +1,17 @@
-<%= form_with(model: participation, local: true) do |form| %>
-  <% if participation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(participation.errors.count, "error") %> prohibited this participation from being saved:</h2>
+<% unless event.users.include? current_user %>
+  <%= simple_form_for(Participation.new(user: current_user, event: event)) do |f| %>
+    <div style="display: none">
+      <div class="form-inputs">
+        <%= f.association :event %>
+      </div>
 
-      <ul>
-      <% participation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <div class="form-inputs">
+        <%= f.association :user %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Participer" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :event_id %>
-    <%= form.text_field :event_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

@@ -30,23 +30,7 @@
   <%= link_to @event.game.name, @event.game %>
 </p>
 
-<% unless @event.users.include? current_user %>
-  <%= simple_form_for(Participation.new(user:current_user, event: @event)) do |f| %>
-    <div style="display: none">
-      <div class="form-inputs">
-        <%= f.association :event %>
-      </div>
-
-      <div class="form-inputs">
-        <%= f.association :user %>
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Participer" %>
-    </div>
-  <% end %>
-<% end %>
+<%= render "participations/form", event: @event %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %> |
