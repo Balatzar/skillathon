@@ -1,0 +1,15 @@
+<% user_count = User.count %>
+<div class="poll-container">
+  <% @events.each do |event| %>
+    <% participation_count = event.participations.count %>
+    <% pourcent = (participation_count.to_f * 100.0 / user_count.to_f).to_i %>
+    <div class="poll w-<%= pourcent %>">
+      <div class="infos">
+        <p><%= event.name %> : <%= event.description %></p>
+      </div>
+      <div class="stats">
+        <p><%= participation_count %>/<%= user_count %></p>
+      </div>
+    </div> 
+  <% end %>
+</div>

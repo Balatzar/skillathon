@@ -14,3 +14,62 @@
  *= require_tree .
  *= require_self
  */
+
+.poll-container {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+
+  .poll {
+    border: 5px solid #000;
+    height: 100px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .w-0 {
+    width: 100px;
+  }
+
+  .w-10 {
+    width: 10%;
+  }
+
+  .w-20 {
+    width: 20%;
+  }
+
+  .w-30 {
+    width: 30%;
+  }
+
+  .w-40 {
+    width: 40%;
+  }
+
+  .w-50 {
+    width: 50%;
+  }
+
+  .w-60 {
+    width: 60%;
+  }
+
+  .w-70 {
+    width: 70%;
+  }
+
+  .w-80 {
+    width: 80%;
+  }
+
+  .w-90 {
+    width: 90%;
+  }
+
+  .w-100 {
+    width: 100%;
+  }
+}

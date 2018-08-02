@@ -8,6 +8,10 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def poll
+    @events = Event.left_joins(:participations).group(:id).order('COUNT(participations.id) DESC')
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show

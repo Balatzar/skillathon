@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  root to: "public_pages#landing"
   resources :dictionaries
   resources :handicaps
   resources :genres
-  root to: "public_pages#landing"
   resources :systems
   resources :participations
-  resources :events
+  resources :events do
+    collection do
+      get :poll
+    end
+  end
   resources :games
   resources :event_types
   devise_for :users
